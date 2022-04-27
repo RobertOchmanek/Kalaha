@@ -20,7 +20,7 @@ public class InitialState extends GameState {
     public void processTurn() {
         int house = -1;
         while (!validateMove(house, turnContext.getNumHouses(), turnContext.getBoard())) {
-            house = turnContext.getPlayersManager().makeMove(FIRST, List.copyOf(turnContext.getBoard().values()));
+            house = turnContext.getPlayersManager().requestForMove(FIRST, List.copyOf(turnContext.getBoard().values()));
         }
         makeMove(house, turnContext.getBoard());
         turnContext.getObserversManager().notifyObservers(generateState(List.copyOf(turnContext.getBoard().values())));

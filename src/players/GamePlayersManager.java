@@ -24,7 +24,7 @@ public class GamePlayersManager implements PlayersManager {
     }
 
     @Override
-    public int makeMove(Player player, List<Integer> pitsState) {
+    public int requestForMove(Player player, List<Integer> pitsState) {
         if (player.equals(Player.FIRST)) {
             return firstPlayer.yourMove(pitsState);
         }
