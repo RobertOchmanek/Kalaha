@@ -11,28 +11,21 @@ import java.util.Objects;
 public class KalahaGame implements Kalah {
 
     private final TurnProcessor turnProcessor;
-
-    private final List<Integer> playerOnePitsState;
-
+    private final GameObserversManager gameObserversManager;
     private KalahPlayer firstPlayer;
-
     private KalahPlayer secondPlayer;
 
-    private final GameObserversManager gameObserversManager;
 
     public KalahaGame() {
         this.turnProcessor = new TurnProcessor();
-        this.playerOnePitsState = new ArrayList<>();
+        this.gameObserversManager = new GameObserversManager();
         this.firstPlayer = null;
         this.secondPlayer = null;
-        this.gameObserversManager = new GameObserversManager();
     }
 
     @Override
     public void setVariant(int houses, int seeds) {
-        for (int i = 0; i < houses; i++) {
-            playerOnePitsState.add(seeds);
-        }
+        turnProcessor.initializeBoard(houses, seeds);
     }
 
     @Override
@@ -52,11 +45,5 @@ public class KalahaGame implements Kalah {
     @Override
     public void startGame() {
         turnProcessor.setObserversManager(gameObserversManager);
-        turnProcessor.processTurn();
-        turnProcessor.processTurn();
-    }
-
-    public List<Integer> getPitsState() {
-        return playerOnePitsState;
     }
 }
