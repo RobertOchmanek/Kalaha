@@ -5,7 +5,7 @@ import players.PlayersManager;
 import processor.state.GameState;
 import processor.state.InitialState;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class TurnProcessor {
@@ -18,7 +18,8 @@ public class TurnProcessor {
 
     public TurnProcessor() {
         this.currentState = new InitialState(this);
-        this.board = new HashMap<>();
+        //TODO: sprawdzić czy któraś mapa zwraca w odpowiedniej kolejnosci
+        this.board = new LinkedHashMap<>();
     }
 
     public void changeState(GameState nextState) {

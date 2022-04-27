@@ -1,9 +1,10 @@
 package processor.state;
 
-import interfaces.KalahaState.GameStates;
+import interfaces.KalahaState;
 import processor.TurnProcessor;
 
-import static interfaces.KalahaState.GameStates.AFTER_PLAYER2_TURN;
+import java.util.List;
+import java.util.Map;
 
 public class AfterSecondState extends GameState {
 
@@ -17,7 +18,17 @@ public class AfterSecondState extends GameState {
     }
 
     @Override
-    public GameStates getStateType() {
-        return AFTER_PLAYER2_TURN;
+    public boolean validateMove(int house, int houses, Map<Integer, Integer> board) {
+        return false;
+    }
+
+    @Override
+    public void makeMove(int house, Map<Integer, Integer> board) {
+
+    }
+
+    @Override
+    public KalahaState generateState(List<Integer> pitsState) {
+        return null;
     }
 }
