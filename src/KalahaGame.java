@@ -2,25 +2,21 @@ import interfaces.GameStateObserver;
 import interfaces.Kalah;
 import interfaces.KalahPlayer;
 import observers.GameObserversManager;
+import players.GamePlayersManager;
+import players.PlayersManager;
 import processor.TurnProcessor;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class KalahaGame implements Kalah {
 
     private final TurnProcessor turnProcessor;
     private final GameObserversManager gameObserversManager;
-    private KalahPlayer firstPlayer;
-    private KalahPlayer secondPlayer;
+    private final PlayersManager playersManager;
 
 
     public KalahaGame() {
         this.turnProcessor = new TurnProcessor();
         this.gameObserversManager = new GameObserversManager();
-        this.firstPlayer = null;
-        this.secondPlayer = null;
+        this.playersManager = new GamePlayersManager();
     }
 
     @Override
@@ -30,11 +26,7 @@ public class KalahaGame implements Kalah {
 
     @Override
     public void registerPlayer(KalahPlayer player) {
-        if (Objects.isNull(firstPlayer)) {
-            firstPlayer = player;
-        } else {
-            secondPlayer = player; //if more invokes than 2, set new second player
-        }
+        playersManager.registerPlayer(player);
     }
 
     @Override
@@ -45,5 +37,6 @@ public class KalahaGame implements Kalah {
     @Override
     public void startGame() {
         turnProcessor.setObserversManager(gameObserversManager);
+        turnProcessor.setPlayersManager(playersManager);
     }
 }
