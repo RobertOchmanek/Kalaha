@@ -12,7 +12,6 @@ public class KalahaGame implements Kalah {
     private final GameObserversManager gameObserversManager;
     private final PlayersManager playersManager;
 
-
     public KalahaGame() {
         this.turnProcessor = new TurnProcessor();
         this.gameObserversManager = new GameObserversManager();
@@ -38,5 +37,6 @@ public class KalahaGame implements Kalah {
     public void startGame() {
         turnProcessor.setObserversManager(gameObserversManager);
         turnProcessor.setPlayersManager(playersManager);
+        //Uruchom gierke
     }
 }
