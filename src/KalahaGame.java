@@ -1,7 +1,7 @@
 import interfaces.GameStateObserver;
 import interfaces.Kalah;
 import interfaces.KalahPlayer;
-import interfaces.KalahaState;
+import observers.GameObserversManager;
 import processor.TurnProcessor;
 
 import java.util.ArrayList;
@@ -12,20 +12,20 @@ public class KalahaGame implements Kalah {
 
     private final TurnProcessor turnProcessor;
 
-    private final List<GameStateObserver> observers;
-
     private final List<Integer> playerOnePitsState;
 
     private KalahPlayer firstPlayer;
 
     private KalahPlayer secondPlayer;
 
+    private final GameObserversManager gameObserversManager;
+
     public KalahaGame() {
         this.turnProcessor = new TurnProcessor();
-        this.observers = new ArrayList<>();
         this.playerOnePitsState = new ArrayList<>();
         this.firstPlayer = null;
         this.secondPlayer = null;
+        this.gameObserversManager = new GameObserversManager();
     }
 
     @Override
@@ -46,19 +46,14 @@ public class KalahaGame implements Kalah {
 
     @Override
     public void addObserver(GameStateObserver observer) {
-        observers.add(observer);
+        gameObserversManager.addObserver(observer);
     }
 
     @Override
     public void startGame() {
+        turnProcessor.setObserversManager(gameObserversManager);
         turnProcessor.processTurn();
         turnProcessor.processTurn();
-    }
-
-    public void notifyObservers(KalahaState kalahaState) {
-        for (GameStateObserver observer : observers) {
-            observer.currentState(kalahaState);
-        }
     }
 
     public List<Integer> getPitsState() {
