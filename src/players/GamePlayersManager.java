@@ -5,7 +5,7 @@ import interfaces.KalahPlayer;
 import java.util.List;
 import java.util.Objects;
 
-public class GamePlayersManager implements PlayersManager{
+public class GamePlayersManager implements PlayersManager {
 
     private KalahPlayer firstPlayer = null;
 
@@ -24,7 +24,10 @@ public class GamePlayersManager implements PlayersManager{
     }
 
     @Override
-    public int makeMove(List<Integer> pitsState) {
-        return firstPlayer.yourMove(pitsState);
+    public int makeMove(Player player, List<Integer> pitsState) {
+        if (player.equals(Player.FIRST)) {
+            return firstPlayer.yourMove(pitsState);
+        }
+        return secondPlayer.yourMove(pitsState);
     }
 }

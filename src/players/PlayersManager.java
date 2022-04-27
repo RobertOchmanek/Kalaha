@@ -7,5 +7,5 @@ import java.util.List;
 public interface PlayersManager {
     void registerPlayer(KalahPlayer kalahPlayer);
 
-    int makeMove(List<Integer> pitsState);
+    int makeMove(Player player, List<Integer> pitsState);
 }
