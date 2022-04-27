@@ -11,14 +11,14 @@ import java.util.Map;
 public class TurnProcessor {
 
     private final Map<Integer, Integer> board;
-    private int numHouses;
     private GameState currentState;
     private ObserversManager observersManager;
     private PlayersManager playersManager;
+    private int numHouses;
 
     public TurnProcessor() {
         this.currentState = new InitialState(this);
-        //TODO: sprawdzić czy któraś mapa zwraca w odpowiedniej kolejnosci
+        //TODO: use map that returns values in the same order as they were added
         this.board = new LinkedHashMap<>();
     }
 

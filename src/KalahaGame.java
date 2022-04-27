@@ -37,6 +37,6 @@ public class KalahaGame implements Kalah {
     public void startGame() {
         turnProcessor.setObserversManager(gameObserversManager);
         turnProcessor.setPlayersManager(playersManager);
-        //Uruchom gierke
+        //TODO: start game processing
     }
 }

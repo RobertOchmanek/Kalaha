@@ -1,0 +1,5 @@
+- Gra toczy się do wygranej jednej ze stron bądź remisu.
+- Gra musi przekazywać graczom czy obserwatorom dane w sposób uniemożliwiający ich modyfikację (ma być możliwy tylko odczyt).
+- Gry muszą być od siebie niezależne: jednoczesne utworzenie wielu obiektów gry powinno umożliwić niezależną rozgrywkę.
+- Stan planszy przekazywany do graczy zależy od położenia gracza. Numeracja dołków wg. obrazka, gdzie przedstawiono numerację z punktu widzenia gracza żółtego.
+- Obserwatorzy zawsze otrzymują stan planszy z punktu widzenia gracza pierwszego.

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameObserversManager implements ObserversManager {
+
     private final List<GameStateObserver> gameObservers;
 
     public GameObserversManager() {
