@@ -4,9 +4,9 @@
 - ~~Ruchy wykonuje się w kierunku przeciwnym do kierunku ruchu wskazówek zegara.~~
 - ~~Gracz wyjmuje wszystkie kamienie z dowolnego dołka w rzędzie własnym, a następnie wkłada po kolei po jednym do kolejnych dołków, poczynając od znajdującego się po prawej stronie tego, z którego wyjął (również do bazowych).~~
 - ~~Jeśli ostatni kamień wpadł do własnej bazy, gracz wykonuje jeszcze jeden ruch. Powtarza się to dopóty ostatni kamień nie wpadnie do innego dołka.~~
-- **Jeśli ostatni kamień wpadł do własnego pustego dołka, gracz bierze wszystkie kamienie z leżącego naprzeciw dołka przeciwnika i wkłada je do swojej bazy.**
-- **Gra kończy się gdy jeden z graczy nie może wykonać ruchu (wszystkie dołki po jego stronie są puste gdy przypada na niego kolej ruchu). Przeciwnik zbiera resztę kamieni ze swoich dołków i wkłada do swojej bazy.**
-- **Wygrywa ten, kto uzbierał więcej kamieni w swej bazie, w przypadku równej ich liczby – remis.**
+- ~~Jeśli ostatni kamień wpadł do własnego pustego dołka, gracz bierze wszystkie kamienie z leżącego naprzeciw dołka przeciwnika i wkłada je do swojej bazy.~~
+- ~~Gra kończy się gdy jeden z graczy nie może wykonać ruchu (wszystkie dołki po jego stronie są puste gdy przypada na niego kolej ruchu).~~
+- **Na koniec, przeciwnik zbiera resztę kamieni ze swoich dołków i wkłada do swojej bazy. Wygrywa ten, kto uzbierał więcej kamieni w swej bazie. W przypadku równej ich liczby – remis.**
 
 ### Wymagania:
 - ~~Partię zaczyna zawsze gracz pierwszy.~~

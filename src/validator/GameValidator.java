@@ -3,14 +3,28 @@ package validator;
 import board.Board;
 import interfaces.KalahaState.GameResults;
 
+import java.util.Map;
+
 import static interfaces.KalahaState.GameResults.*;
 
+//TODO: refactor into a chain of responsibilities
 public class GameValidator implements Validator {
+
+    public boolean canMove(Map<Integer, Integer> board, int numHouses) {
+        boolean canMove = false;
+        for (int house = 0; house < numHouses; ++house) {
+            if (board.get(house) != 0) {
+                canMove = true;
+                break;
+            }
+        }
+        return canMove;
+    }
 
     @Override
     public GameResults getGameState(Board board) {
-        //sprawdz czy w ogole robic koniec gry
-        //koniec jest wtedy, kiedy przynajmniej jeden z graczy nie ma u siebie w dolkach nic
+
+        //Check if one of the players has all houses empty
         boolean player1OutOfStones = true;
         boolean player2OutOfStones = true;
         for (int i = 0; i < board.getNumberOfHouses(); i++) {
@@ -26,6 +40,7 @@ public class GameValidator implements Validator {
             }
         }
 
+        //If both players still have seeds in their houses result is unknown
         if (!player1OutOfStones && !player2OutOfStones) {
             return UNKNOWN;
         }

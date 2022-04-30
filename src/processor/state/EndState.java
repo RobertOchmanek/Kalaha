@@ -1,9 +1,7 @@
 package processor.state;
 
-import interfaces.KalahaState;
 import processor.TurnProcessor;
 
-import java.util.List;
 import java.util.Map;
 
 public class EndState extends GameState {
@@ -25,10 +23,5 @@ public class EndState extends GameState {
     @Override
     public boolean makeMove(int house, Map<Integer, Integer> board) {
         return false;
-    }
-
-    @Override
-    public KalahaState generateState(List<Integer> pitsState) {
-        return null;
     }
 }

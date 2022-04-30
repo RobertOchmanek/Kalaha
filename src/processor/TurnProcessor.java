@@ -4,6 +4,7 @@ import observers.ObserversManager;
 import players.PlayersManager;
 import processor.state.GameState;
 import processor.state.InitialState;
+import validator.GameValidator;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -11,15 +12,17 @@ import java.util.Map;
 public class TurnProcessor {
 
     private final Map<Integer, Integer> board;
+    private final GameValidator gameValidator;
+    private int numHouses;
     private GameState currentState;
     private ObserversManager observersManager;
     private PlayersManager playersManager;
-    private int numHouses;
 
     public TurnProcessor() {
-        this.currentState = new InitialState(this);
         //TODO: use map that returns values in the same order as they were added
         this.board = new LinkedHashMap<>();
+        this.gameValidator = new GameValidator();
+        this.currentState = new InitialState(this);
     }
 
     public void changeState(GameState nextState) {
@@ -44,6 +47,10 @@ public class TurnProcessor {
 
     public Map<Integer, Integer> getBoard() {
         return board;
+    }
+
+    public boolean canMove() {
+        return gameValidator.canMove(board, numHouses);
     }
 
     public int getNumHouses() {

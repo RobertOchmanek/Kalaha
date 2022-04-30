@@ -21,5 +21,23 @@ public abstract class GameState {
 
     public abstract boolean makeMove(int house, Map<Integer, Integer> board);
 
-    public abstract KalahaState generateState(List<Integer> pitsState);
+    public KalahaState generateState(List<Integer> pitsState, GameStates gameState, KalahaState.GameResults gameResult) {
+        return new KalahaState() {
+
+            @Override
+            public List<Integer> getPitsState() {
+                return pitsState;
+            }
+
+            @Override
+            public GameStates getGameState() {
+                return gameState;
+            }
+
+            @Override
+            public GameResults getGameResult() {
+                return gameResult;
+            }
+        };
+    }
 }

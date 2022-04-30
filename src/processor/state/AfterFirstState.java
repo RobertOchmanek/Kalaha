@@ -1,10 +1,7 @@
 package processor.state;
 
-import interfaces.KalahaState;
 import processor.TurnProcessor;
 
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 public class AfterFirstState extends GameState {
@@ -28,7 +25,7 @@ public class AfterFirstState extends GameState {
         return false;
     }
 
-    @Override
+    /*@Override
     public KalahaState generateState(List<Integer> pitsState) {
         return null;
     }
@@ -50,5 +47,5 @@ public class AfterFirstState extends GameState {
         //create first player base
         secondPlayerViewBoard.put(numHouses * 2 + 1, firstPlayerViewBoard.get(numHouses));
         return secondPlayerViewBoard;
-    }
+    }*/
 }
