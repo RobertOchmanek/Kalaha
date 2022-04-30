@@ -19,7 +19,7 @@ public abstract class GameState {
 
     public abstract boolean validateMove(int house, int houses, Map<Integer, Integer> board);
 
-    public abstract void makeMove(int house, Map<Integer, Integer> board);
+    public abstract boolean makeMove(int house, Map<Integer, Integer> board);
 
     public abstract KalahaState generateState(List<Integer> pitsState);
 }

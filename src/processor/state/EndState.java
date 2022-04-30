@@ -23,8 +23,8 @@ public class EndState extends GameState {
     }
 
     @Override
-    public void makeMove(int house, Map<Integer, Integer> board) {
-
+    public boolean makeMove(int house, Map<Integer, Integer> board) {
+        return false;
     }
 
     @Override
