@@ -3,6 +3,7 @@ package board;
 import players.Player;
 
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -39,6 +40,20 @@ public class GameBoard {
 
     public List<Integer> getImmutableValues() {
         return List.copyOf(boardMap.values());
+    }
+
+    public List<Integer> getReversedImmutableValues() {
+        List<Integer> reversedValues = new LinkedList<>();
+
+        for (int house = firstBase + 1; house <= secondBase; ++house) {
+            reversedValues.add(boardMap.get(house));
+        }
+
+        for (int house = 0; house <= firstBase; ++house) {
+            reversedValues.add(boardMap.get(house));
+        }
+
+        return List.copyOf(reversedValues);
     }
 
     //TODO: make this method universal for both players

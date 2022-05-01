@@ -27,7 +27,7 @@ public abstract class GameState {
         GameBoard gameBoard = turnContext.getGameBoard();
 
         int house = -1;
-        while (!validateMove(house, gameBoard)) {
+        while (!turnContext.validateMove(FIRST, house, gameBoard)) {
             house = turnContext.requestForMove(FIRST, gameBoard.getImmutableValues());
         }
 
@@ -68,10 +68,6 @@ public abstract class GameState {
 
     protected boolean getBonusSeeds(int house, int seeds, GameBoard gameBoard) {
         return false;
-    }
-
-    protected boolean validateMove(int house, GameBoard gameBoard) {
-        return house >= 0 && house < gameBoard.getNumHouses() && gameBoard.boardAsMap().get(house) != 0;
     }
 
     protected KalahaState generateState(List<Integer> pitsState, GameStates gameState, GameResults gameResult) {

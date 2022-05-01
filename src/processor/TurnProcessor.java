@@ -45,6 +45,10 @@ public class TurnProcessor {
         return gameValidator.canMove(player, gameBoard);
     }
 
+    public boolean validateMove(Player player, int house, GameBoard gameBoard) {
+        return gameValidator.validateMove(player, house, gameBoard);
+    }
+
     public GameResults getGameResult() {
         return gameValidator.getGameResult(gameBoard);
     }

@@ -29,6 +29,14 @@ public class GameValidator {
         return canMove;
     }
 
+    public boolean validateMove(Player player, int house, GameBoard gameBoard) {
+        if (FIRST.equals(player)) {
+            return house >= 0 && house < gameBoard.getFirstBase() && gameBoard.boardAsMap().get(house) != 0;
+        } else {
+            return house >= gameBoard.getFirstBase() + 1 && house < gameBoard.getSecondBase() && gameBoard.boardAsMap().get(house) != 0;
+        }
+    }
+
     public GameResults getGameResult(GameBoard gameBoard) {
 
         if (gameBoard.getFirstScore() == gameBoard.getSecondScore()) {
