@@ -41,8 +41,8 @@ public class TurnProcessor {
         return gameBoard;
     }
 
-    public boolean canMove() {
-        return gameValidator.canMove(gameBoard);
+    public boolean canMove(Player player) {
+        return gameValidator.canMove(player, gameBoard);
     }
 
     public GameResults getGameResult() {

@@ -1,8 +1,12 @@
 package board;
 
+import players.Player;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import static players.Player.FIRST;
 
 public class GameBoard {
 
@@ -48,9 +52,12 @@ public class GameBoard {
         }
     }
 
-    //TODO: make this method universal for both players
-    public boolean isInBounds(int house) {
-        return house >= 0 && house < numHouses;
+    public boolean isInBounds(Player player, int house) {
+        if (FIRST.equals(player)) {
+            return house >= 0 && house < firstBase;
+        } else {
+            return house >= firstBase + 1 && house < secondBase;
+        }
     }
 
     public int getSize() {
