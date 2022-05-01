@@ -19,12 +19,12 @@ public class PlayersManager {
         if (Objects.isNull(firstPlayer)) {
             firstPlayer = kalahPlayer;
         } else {
-            secondPlayer = kalahPlayer; //if more invokes than 2, set new second player
+            secondPlayer = kalahPlayer;
         }
     }
 
     public int requestForMove(Player player, List<Integer> pitsState) {
-        if (player.equals(FIRST)) {
+        if (FIRST.equals(player)) {
             return firstPlayer.yourMove(pitsState);
         }
         return secondPlayer.yourMove(pitsState);

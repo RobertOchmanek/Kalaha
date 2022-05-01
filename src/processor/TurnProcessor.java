@@ -1,27 +1,26 @@
 package processor;
 
+import board.GameBoard;
+import interfaces.KalahaState;
 import interfaces.KalahaState.GameResults;
 import observers.ObserversManager;
+import players.Player;
 import players.PlayersManager;
 import processor.state.GameState;
 import processor.state.InitialState;
 import validator.GameValidator;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.List;
 
 public class TurnProcessor {
 
-    private final Map<Integer, Integer> board;
     private final GameValidator gameValidator;
-    private int numHouses;
     private GameState currentState;
-    private ObserversManager observersManager;
+    private GameBoard gameBoard;
     private PlayersManager playersManager;
+    private ObserversManager observersManager;
 
     public TurnProcessor() {
-        //TODO: use map that returns values in the same order as they were added
-        this.board = new LinkedHashMap<>();
         this.gameValidator = new GameValidator();
         this.currentState = new InitialState(this);
     }
@@ -35,46 +34,34 @@ public class TurnProcessor {
     }
 
     public void initializeBoard(int houses, int seeds) {
-        this.numHouses = houses;
-        int totalFields = (2 * houses) + 2;
-        for (int field = 0; field < totalFields; ++field) {
-            if (field == houses || field == (2 * houses) + 1) {
-                board.put(field, 0);
-            } else {
-                board.put(field, seeds);
-            }
-        }
+        gameBoard = new GameBoard(houses, seeds);
     }
 
-    public Map<Integer, Integer> getBoard() {
-        return board;
+    public GameBoard getGameBoard() {
+        return gameBoard;
     }
 
     public boolean canMove() {
-        return gameValidator.canMove(board, numHouses);
+        return gameValidator.canMove(gameBoard);
     }
 
     public GameResults getGameResult() {
-        return gameValidator.getGameResult(board);
-    }
-
-    public int getNumHouses() {
-        return numHouses;
-    }
-
-    public void setObserversManager(ObserversManager observersManager) {
-        this.observersManager = observersManager;
-    }
-
-    public ObserversManager getObserversManager() {
-        return observersManager;
+        return gameValidator.getGameResult(gameBoard);
     }
 
     public void setPlayersManager(PlayersManager playersManager) {
         this.playersManager = playersManager;
     }
 
-    public PlayersManager getPlayersManager() {
-        return playersManager;
+    public int requestForMove(Player player, List<Integer> pitsState) {
+        return playersManager.requestForMove(player, pitsState);
+    }
+
+    public void setObserversManager(ObserversManager observersManager) {
+        this.observersManager = observersManager;
+    }
+
+    public void notifyObservers(KalahaState gameState) {
+        observersManager.notifyObservers(gameState);
     }
 }

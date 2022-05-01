@@ -1,10 +1,10 @@
 package processor.state;
 
+import board.GameBoard;
 import interfaces.KalahaState.GameResults;
 import players.Player;
 import processor.TurnProcessor;
 
-import java.util.List;
 import java.util.Map;
 
 import static interfaces.KalahaState.GameStates.END_OF_GAME;
@@ -12,45 +12,35 @@ import static players.Player.FIRST;
 
 public class EndState extends GameState {
 
-    private final Player finishingPlayer;
+    private final Player loosingPlayer;
 
-    public EndState(TurnProcessor turnContext, Player finishingPlayer) {
+    public EndState(TurnProcessor turnContext, Player loosingPlayer) {
         super(turnContext);
-        this.finishingPlayer = finishingPlayer;
+        this.loosingPlayer = loosingPlayer;
     }
 
     @Override
     public void processTurn() {
-        makeMove(0, turnContext.getBoard());
+        GameBoard gameBoard = turnContext.getGameBoard();
+        finalMove(FIRST.equals(loosingPlayer) ? 0 : gameBoard.getNumHouses() + 1, gameBoard);
         GameResults gameResult = turnContext.getGameResult();
-        turnContext.getObserversManager().notifyObservers(generateState(List.copyOf(turnContext.getBoard().values()), END_OF_GAME, gameResult));
+        turnContext.notifyObservers(generateState(gameBoard.getImmutableValues(), END_OF_GAME, gameResult));
         //TODO: do we need to unregister observers to be compliant with the pattern (even simple .remove())?
     }
 
-    @Override
-    public boolean validateMove(int house, int houses, Map<Integer, Integer> board) {
-        return false;
-    }
+    private void finalMove(int house, GameBoard gameBoard) {
+        Map<Integer, Integer> boardMap = gameBoard.boardAsMap();
 
-    @Override
-    public boolean makeMove(int house, Map<Integer, Integer> board) {
-        //Get indexes of base and houses to check for stones
-        int base = FIRST.equals(finishingPlayer) ? turnContext.getNumHouses() : (2 * turnContext.getNumHouses()) + 1;
-        int startingHouse = FIRST.equals(finishingPlayer) ? 0 : turnContext.getNumHouses() + 1;
-        int endingHouse = FIRST.equals(finishingPlayer) ? turnContext.getNumHouses() : (2 * turnContext.getNumHouses()) + 1;
-
+        int base = FIRST.equals(loosingPlayer) ? gameBoard.getFirstBase() : gameBoard.getSecondBase();
         int leftoverSeeds = 0;
 
         //Accumulate sum of leftover seeds for loosing player
-        for (int currentHouse = startingHouse; currentHouse < endingHouse; ++currentHouse) {
-            leftoverSeeds += board.put(currentHouse, 0);
+        for (int currentHouse = house; currentHouse < base; ++currentHouse) {
+            leftoverSeeds += boardMap.put(currentHouse, 0);
         }
 
         //Sum leftover seeds with players score and insert into base
-        leftoverSeeds += board.get(base);
-        board.put(base, leftoverSeeds);
-
-        //Collecting leftover stones is the last move thus no additional move can be produced
-        return false;
+        leftoverSeeds += boardMap.get(base);
+        boardMap.put(base, leftoverSeeds);
     }
 }

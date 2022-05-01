@@ -1,8 +1,7 @@
 package processor.state;
 
+import board.GameBoard;
 import processor.TurnProcessor;
-
-import java.util.Map;
 
 public class SecondPlayerState extends GameState {
 
@@ -16,21 +15,11 @@ public class SecondPlayerState extends GameState {
     }
 
     @Override
-    public boolean validateMove(int house, int houses, Map<Integer, Integer> board) {
+    public boolean makeMove(int house, GameBoard gameBoard) {
         return false;
     }
 
-    @Override
-    public boolean makeMove(int house, Map<Integer, Integer> board) {
-        return false;
-    }
-
-    /*@Override
-    public KalahaState generateState(List<Integer> pitsState) {
-        return null;
-    }
-
-    public Map<Integer, Integer> getReversedBoardView() {
+    /*public Map<Integer, Integer> getReversedBoardView() {
         Map<Integer, Integer> firstPlayerViewBoard = turnContext.getBoard();
         Map<Integer, Integer> secondPlayerViewBoard = new LinkedHashMap<>();
         int numHouses = turnContext.getNumHouses();

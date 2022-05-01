@@ -1,18 +1,22 @@
 package validator;
 
+import board.GameBoard;
 import interfaces.KalahaState.GameResults;
 
 import java.util.Map;
 
 import static interfaces.KalahaState.GameResults.*;
 
-//TODO: refactor into a chain of responsibilities
+//TODO: refactor into a chain of responsibilities?
 public class GameValidator {
 
-    public boolean canMove(Map<Integer, Integer> board, int numHouses) {
+    //TODO: make this method universal for both players
+    public boolean canMove(GameBoard gameBoard) {
         boolean canMove = false;
-        for (int house = 0; house < numHouses; ++house) {
-            if (board.get(house) != 0) {
+        Map<Integer, Integer> boardMap = gameBoard.boardAsMap();
+
+        for (int house = 0; house < gameBoard.getNumHouses(); ++house) {
+            if (boardMap.get(house) != 0) {
                 canMove = true;
                 break;
             }
@@ -20,11 +24,11 @@ public class GameValidator {
         return canMove;
     }
 
-    public GameResults getGameResult(Map<Integer, Integer> board) {
+    public GameResults getGameResult(GameBoard gameBoard) {
 
-        if (board.firstScore == board.secondScore) {
+        if (gameBoard.getFirstScore() == gameBoard.getSecondScore()) {
             return DRAW;
-        } else if (board.firstScore > board.secondScore) {
+        } else if (gameBoard.getFirstScore() > gameBoard.getSecondScore()) {
             return PLAYER1_WON;
         } else {
             return PLAYER2_WON;
