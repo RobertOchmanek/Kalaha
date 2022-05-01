@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import static players.Player.FIRST;
+import static players.Player.SECOND;
 
 public class GameBoard {
 
@@ -56,18 +57,18 @@ public class GameBoard {
         return List.copyOf(reversedValues);
     }
 
-    //TODO: make this method universal for both players
-    public int getOpposingHouse(int house) {
-        if (house == firstBase) {
-            return secondBase;
-        } else if (house == secondBase) {
-            return firstBase;
-        } else {
+    public int getOpposingHouse(int house, Player player) {
+        if (FIRST.equals(player) && isInBounds(house, player)) {
             return house + (2 * (numHouses - house));
+        } else if (SECOND.equals(player) && isInBounds(house, player)) {
+            return (2 * numHouses) - house;
+        } else {
+            //Return -1 to indicate that player ended on their side or in one of the bases
+            return -1;
         }
     }
 
-    public boolean isInBounds(Player player, int house) {
+    private boolean isInBounds(int house, Player player) {
         if (FIRST.equals(player)) {
             return house >= 0 && house < firstBase;
         } else {

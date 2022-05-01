@@ -4,6 +4,7 @@ import board.GameBoard;
 import interfaces.KalahaState;
 import interfaces.KalahaState.GameResults;
 import interfaces.KalahaState.GameStates;
+import players.Player;
 import processor.TurnProcessor;
 
 import java.util.List;
@@ -31,7 +32,7 @@ public abstract class GameState {
             house = turnContext.requestForMove(FIRST, gameBoard.getImmutableValues());
         }
 
-        boolean additionalMove = makeMove(house, gameBoard);
+        boolean additionalMove = makeMove(house, gameBoard, FIRST);
 
         //Game result is unknown at this point as it is determined at the beginning of players move
         turnContext.notifyObservers(generateState(gameBoard.getImmutableValues(), AFTER_PLAYER1_TURN, UNKNOWN));
@@ -42,7 +43,7 @@ public abstract class GameState {
         }
     }
 
-    protected boolean makeMove(int house, GameBoard gameBoard) {
+    protected boolean makeMove(int house, GameBoard gameBoard, Player player) {
         Map<Integer, Integer> boardMap = gameBoard.boardAsMap();
 
         int seeds = boardMap.put(house, 0);
@@ -54,19 +55,41 @@ public abstract class GameState {
             boardMap.put(currentHouse, currentSeeds + 1);
         }
 
-        boolean gotBonusSeeds = getBonusSeeds(house, seeds, gameBoard);
+        //TODO: replace additional move checks with validator step?
+        boolean gotBonusSeeds = getBonusSeeds(house, seeds, gameBoard, player);
 
-        //If player got bonus seeds the finishing position is in one of their houses thus is not eligible for additional move
+        /*If player got bonus seeds the finishing position is in one of their houses thus is not eligible for additional move
+          Else, heck whether last seed was placed in a base and player is eligible for additional turn*/
         if (gotBonusSeeds) {
             return false;
-        } else {
-            //TODO: replace additional move check with validator step?
-            //Check whether last seed was placed in a base and player is eligible for additional turn
+        } else if (FIRST.equals(player)) {
             return (house + seeds) % gameBoard.getSize() == gameBoard.getFirstBase();
+        } else {
+            return (house + seeds) % gameBoard.getSize() == gameBoard.getSecondBase();
         }
     }
 
-    protected boolean getBonusSeeds(int house, int seeds, GameBoard gameBoard) {
+    protected boolean getBonusSeeds(int house, int seeds, GameBoard gameBoard, Player player) {
+        Map<Integer, Integer> boardMap = gameBoard.boardAsMap();
+
+        //Check whether last seed was placed in one of players houses and if so, obtain bonus seeds from opposing house
+        int finalPosition = (house + seeds) % gameBoard.getSize();
+
+        //Check whether last seed was placed in empty house
+        if ((boardMap.get(finalPosition)) - 1 == 0) {
+            int opposingPosition = gameBoard.getOpposingHouse(finalPosition, player);
+
+            //Check if final position is in bounds of players houses and if opposing house is not empty
+            if (opposingPosition != -1 && boardMap.get(opposingPosition) != 0) {
+                int bonusSeeds = boardMap.put(opposingPosition, 0);
+                //Add bonus seeds to current number of seeds in players base
+                int currentSeeds = FIRST.equals(player) ? gameBoard.getFirstScore() : gameBoard.getSecondScore();
+                boardMap.put(FIRST.equals(player) ? gameBoard.getFirstBase() : gameBoard.getSecondBase(), currentSeeds + bonusSeeds);
+
+                return true;
+            }
+        }
+
         return false;
     }
 

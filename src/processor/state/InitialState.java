@@ -1,5 +1,7 @@
 package processor.state;
 
+import board.GameBoard;
+import players.Player;
 import processor.TurnProcessor;
 
 public class InitialState extends GameState {
@@ -11,5 +13,9 @@ public class InitialState extends GameState {
     @Override
     public void processTurn() {
         baseMove();
+    }
+
+    protected boolean getBonusSeeds(int house, int seeds, GameBoard gameBoard, Player player) {
+        return false;
     }
 }
