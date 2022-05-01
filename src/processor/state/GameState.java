@@ -4,6 +4,7 @@ import board.GameBoard;
 import interfaces.KalahaState;
 import interfaces.KalahaState.GameResults;
 import interfaces.KalahaState.GameStates;
+import observers.KalahaStateBuilder;
 import players.Player;
 import processor.TurnProcessor;
 
@@ -94,23 +95,10 @@ public abstract class GameState {
     }
 
     protected KalahaState generateState(List<Integer> pitsState, GameStates gameState, GameResults gameResult) {
-
-        return new KalahaState() {
-
-            @Override
-            public List<Integer> getPitsState() {
-                return pitsState;
-            }
-
-            @Override
-            public GameStates getGameState() {
-                return gameState;
-            }
-
-            @Override
-            public GameResults getGameResult() {
-                return gameResult;
-            }
-        };
+        return new KalahaStateBuilder()
+                .setPitsState(pitsState)
+                .setGameResult(gameResult)
+                .setGameState(gameState)
+                .build();
     }
 }
