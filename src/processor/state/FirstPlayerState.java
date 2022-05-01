@@ -37,7 +37,7 @@ public class FirstPlayerState extends GameState {
             }
         } else {
             //EndState is responsible for calculating game result and notifying observers
-            turnContext.changeState(new EndState(turnContext));
+            turnContext.changeState(new EndState(turnContext, FIRST));
         }
     }
 

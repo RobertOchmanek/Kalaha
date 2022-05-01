@@ -6,11 +6,11 @@
 - ~~Jeśli ostatni kamień wpadł do własnej bazy, gracz wykonuje jeszcze jeden ruch. Powtarza się to dopóty ostatni kamień nie wpadnie do innego dołka.~~
 - ~~Jeśli ostatni kamień wpadł do własnego pustego dołka, gracz bierze wszystkie kamienie z leżącego naprzeciw dołka przeciwnika i wkłada je do swojej bazy.~~
 - ~~Gra kończy się gdy jeden z graczy nie może wykonać ruchu (wszystkie dołki po jego stronie są puste gdy przypada na niego kolej ruchu).~~
-- **Na koniec, przeciwnik zbiera resztę kamieni ze swoich dołków i wkłada do swojej bazy. Wygrywa ten, kto uzbierał więcej kamieni w swej bazie. W przypadku równej ich liczby – remis.**
+- ~~Na koniec, przeciwnik zbiera resztę kamieni ze swoich dołków i wkłada do swojej bazy. Wygrywa ten, kto uzbierał więcej kamieni w swej bazie. W przypadku równej ich liczby – remis.~~
 
 ### Wymagania:
 - ~~Partię zaczyna zawsze gracz pierwszy.~~
-- **Gra toczy się do wygranej jednej ze stron bądź remisu.**
+- ~~Gra toczy się do wygranej jednej ze stron bądź remisu.~~
 - ~~Przekazanie przez gracza błędnej informacji o jego ruchu należy zignorować i zapytać gracza ponownie.~~
 - ~~Zakładamy, że gracze zawsze w jakiś sposób odpowiedzą na pytanie o ruch. Choć czas do namysłu może być dowolny. W czasie gdy gracz planuje posunięcie obiekt gry nic nie robi.~~
 - **Gra musi przekazywać graczom czy obserwatorom dane w sposób uniemożliwiający ich modyfikację (ma być możliwy tylko odczyt).**

@@ -1,5 +1,6 @@
 package processor;
 
+import interfaces.KalahaState.GameResults;
 import observers.ObserversManager;
 import players.PlayersManager;
 import processor.state.GameState;
@@ -51,6 +52,10 @@ public class TurnProcessor {
 
     public boolean canMove() {
         return gameValidator.canMove(board, numHouses);
+    }
+
+    public GameResults getGameResult() {
+        return gameValidator.getGameResult(board);
     }
 
     public int getNumHouses() {
