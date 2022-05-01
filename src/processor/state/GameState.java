@@ -37,7 +37,7 @@ public abstract class GameState {
         //Game result is unknown at this point as it is determined at the beginning of players move
         turnContext.notifyObservers(generateState(gameBoard.getImmutableValues(), AFTER_PLAYER1_TURN, UNKNOWN));
 
-        //If player is eligible for additional stay in current state, else transition to opponents state
+        //If player is eligible for additional move stay in current state, else transition to opponents state
         if (!additionalMove) {
             turnContext.changeState(new SecondPlayerState(turnContext));
         }
