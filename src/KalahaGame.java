@@ -1,21 +1,20 @@
 import interfaces.GameStateObserver;
 import interfaces.Kalah;
 import interfaces.KalahPlayer;
-import observers.GameObserversManager;
-import players.GamePlayersManager;
+import observers.ObserversManager;
 import players.PlayersManager;
 import processor.TurnProcessor;
 
 public class KalahaGame implements Kalah {
 
     private final TurnProcessor turnProcessor;
-    private final GameObserversManager gameObserversManager;
+    private final ObserversManager observersManager;
     private final PlayersManager playersManager;
 
     public KalahaGame() {
         this.turnProcessor = new TurnProcessor();
-        this.gameObserversManager = new GameObserversManager();
-        this.playersManager = new GamePlayersManager();
+        this.observersManager = new ObserversManager();
+        this.playersManager = new PlayersManager();
     }
 
     @Override
@@ -30,12 +29,12 @@ public class KalahaGame implements Kalah {
 
     @Override
     public void addObserver(GameStateObserver observer) {
-        gameObserversManager.addObserver(observer);
+        observersManager.addObserver(observer);
     }
 
     @Override
     public void startGame() {
-        turnProcessor.setObserversManager(gameObserversManager);
+        turnProcessor.setObserversManager(observersManager);
         turnProcessor.setPlayersManager(playersManager);
         //TODO: start game processing
     }

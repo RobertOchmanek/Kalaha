@@ -29,9 +29,9 @@ public class InitialState extends GameState {
 
         //If player is eligible for additional move skip transition to opponents state
         if (additionalMove) {
-            turnContext.changeState(new AfterSecondState(turnContext));
+            turnContext.changeState(new FirstPlayerState(turnContext));
         } else {
-            turnContext.changeState(new AfterFirstState(turnContext));
+            turnContext.changeState(new SecondPlayerState(turnContext));
         }
     }
 

@@ -3,9 +3,24 @@ package observers;
 import interfaces.GameStateObserver;
 import interfaces.KalahaState;
 
-public interface ObserversManager {
+import java.util.ArrayList;
+import java.util.List;
 
-    void notifyObservers(KalahaState kalahaState);
+public class ObserversManager {
 
-    void addObserver(GameStateObserver observers);
+    private final List<GameStateObserver> gameObservers;
+
+    public ObserversManager() {
+        this.gameObservers = new ArrayList<>();
+    }
+
+    public void notifyObservers(KalahaState kalahaState) {
+        for (GameStateObserver observer : gameObservers) {
+            observer.currentState(kalahaState);
+        }
+    }
+
+    public void addObserver(GameStateObserver observer) {
+        gameObservers.add(observer);
+    }
 }

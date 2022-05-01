@@ -12,7 +12,9 @@ public class EndState extends GameState {
 
     @Override
     public void processTurn() {
-        System.out.println("Game ended.");
+        //Calculate results
+        //Notify observers
+        //Unregister observers
     }
 
     @Override

@@ -1,6 +1,7 @@
 package processor.state;
 
 import interfaces.KalahaState;
+import interfaces.KalahaState.GameResults;
 import interfaces.KalahaState.GameStates;
 import processor.TurnProcessor;
 
@@ -21,7 +22,8 @@ public abstract class GameState {
 
     public abstract boolean makeMove(int house, Map<Integer, Integer> board);
 
-    public KalahaState generateState(List<Integer> pitsState, GameStates gameState, KalahaState.GameResults gameResult) {
+    public KalahaState generateState(List<Integer> pitsState, GameStates gameState, GameResults gameResult) {
+
         return new KalahaState() {
 
             @Override

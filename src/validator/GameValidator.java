@@ -1,6 +1,6 @@
 package validator;
 
-import board.Board;
+import board.GameBoard;
 import interfaces.KalahaState.GameResults;
 
 import java.util.Map;
@@ -22,7 +22,7 @@ public class GameValidator implements Validator {
     }
 
     @Override
-    public GameResults getGameState(Board board) {
+    public GameResults getGameState(GameBoard board) {
 
         //Check if one of the players has all houses empty
         boolean player1OutOfStones = true;

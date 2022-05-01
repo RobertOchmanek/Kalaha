@@ -3,10 +3,30 @@ package players;
 import interfaces.KalahPlayer;
 
 import java.util.List;
+import java.util.Objects;
 
-public interface PlayersManager {
+import static players.Player.FIRST;
 
-    void registerPlayer(KalahPlayer kalahPlayer);
+public class PlayersManager {
 
-    int requestForMove(Player player, List<Integer> pitsState);
+    private KalahPlayer firstPlayer = null;
+    private KalahPlayer secondPlayer = null;
+
+    public PlayersManager() {
+    }
+
+    public void registerPlayer(KalahPlayer kalahPlayer) {
+        if (Objects.isNull(firstPlayer)) {
+            firstPlayer = kalahPlayer;
+        } else {
+            secondPlayer = kalahPlayer; //if more invokes than 2, set new second player
+        }
+    }
+
+    public int requestForMove(Player player, List<Integer> pitsState) {
+        if (player.equals(FIRST)) {
+            return firstPlayer.yourMove(pitsState);
+        }
+        return secondPlayer.yourMove(pitsState);
+    }
 }
