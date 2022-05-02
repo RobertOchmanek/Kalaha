@@ -1,4 +1,4 @@
-package observers;
+package observers.state;
 
 import java.util.List;
 

@@ -7,6 +7,6 @@ Za ktore klasy/mechanizmy odpowiedzialny jest Daniel Koszyk:
 
 Robert Ochmanek:
 - pakiet processor
-- uzycie wzorca state i zbudowane na jego podstawie klasy do kazdego stanu
+- uzycie wzorca stan i zbudowane na jego podstawie klasy do kazdego stanu gry
 - logika gry/wykonywanie ruchow graczy
 - GameValidator

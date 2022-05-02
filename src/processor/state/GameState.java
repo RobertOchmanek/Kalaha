@@ -4,7 +4,7 @@ import board.GameBoard;
 import interfaces.KalahaState;
 import interfaces.KalahaState.GameResults;
 import interfaces.KalahaState.GameStates;
-import observers.KalahaStateBuilder;
+import observers.state.KalahaStateBuilder;
 import players.Player;
 import processor.TurnProcessor;
 

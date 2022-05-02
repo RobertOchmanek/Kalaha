@@ -1,4 +1,4 @@
-package observers;
+package observers.state;
 
 import interfaces.KalahaState;
 
@@ -26,7 +26,7 @@ public class KalahaStateBuilder {
     }
 
     public KalahaState build() {
-        return new observers.KalahaState(this);
+        return new observers.state.KalahaState(this);
     }
 
     public List<Integer> getPitsState() {

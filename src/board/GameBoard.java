@@ -19,7 +19,6 @@ public class GameBoard {
     private final int secondBase;
 
     public GameBoard(int houses, int seeds) {
-        //TODO: use map that returns values in the same order as they were added
         this.boardMap = new LinkedHashMap<>();
         this.size = (2 * houses) + 2;
         this.numHouses = houses;
