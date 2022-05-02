@@ -68,4 +68,12 @@ public class TurnProcessor {
     public void notifyObservers(KalahaState gameState) {
         observersManager.notifyObservers(gameState);
     }
+
+    public void removeObservers() {
+        observersManager.unregisterObservers();
+    }
+
+    public GameState getCurrentState() {
+        return currentState;
+    }
 }

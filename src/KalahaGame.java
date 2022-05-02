@@ -4,6 +4,7 @@ import interfaces.KalahPlayer;
 import observers.ObserversManager;
 import players.PlayersManager;
 import processor.TurnProcessor;
+import processor.state.EndState;
 
 public class KalahaGame implements Kalah {
 
@@ -36,6 +37,11 @@ public class KalahaGame implements Kalah {
     public void startGame() {
         turnProcessor.setObserversManager(observersManager);
         turnProcessor.setPlayersManager(playersManager);
-        //TODO: start game processing
+        while (!(turnProcessor.getCurrentState() instanceof EndState)) {
+            turnProcessor.processTurn();
+        }
+        System.out.println("Game will end soon, last notify");
+        turnProcessor.processTurn();
+        System.out.println("Game has ended");
     }
 }

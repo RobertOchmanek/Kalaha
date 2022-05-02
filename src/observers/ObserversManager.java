@@ -23,4 +23,8 @@ public class ObserversManager {
     public void addObserver(GameStateObserver observer) {
         gameObservers.add(observer);
     }
+
+    public void unregisterObservers() {
+        gameObservers.clear();
+    }
 }

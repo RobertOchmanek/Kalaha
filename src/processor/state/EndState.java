@@ -25,7 +25,7 @@ public class EndState extends GameState {
         finalMove(FIRST.equals(loosingPlayer) ? 0 : gameBoard.getNumHouses() + 1, gameBoard);
         GameResults gameResult = turnContext.getGameResult();
         turnContext.notifyObservers(generateState(gameBoard.getImmutableValues(), END_OF_GAME, gameResult));
-        //TODO: do we need to unregister observers to be compliant with the pattern (even simple .remove())?
+        turnContext.removeObservers();
     }
 
     private void finalMove(int house, GameBoard gameBoard) {
