@@ -1,9 +1,9 @@
 package processor.state;
 
-import board.GameBoard;
 import interfaces.KalahaState;
-import players.Player;
 import processor.TurnProcessor;
+
+import static processor.state.StateName.INITIAL;
 
 public class InitialState extends GameState {
 
@@ -17,7 +17,8 @@ public class InitialState extends GameState {
         baseMove();
     }
 
-    protected boolean getBonusSeeds(int house, int seeds, GameBoard gameBoard, Player player) {
-        return false;
+    @Override
+    public StateName getStateName() {
+        return INITIAL;
     }
 }

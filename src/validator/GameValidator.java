@@ -9,7 +9,6 @@ import java.util.Map;
 import static interfaces.KalahaState.GameResults.*;
 import static players.Player.FIRST;
 
-//TODO: refactor into a chain of responsibilities?
 public class GameValidator {
 
     public boolean canMove(Player player, GameBoard gameBoard) {

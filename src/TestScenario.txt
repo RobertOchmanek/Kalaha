@@ -1,0 +1,109 @@
+Pits state to: [4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0]
+Game state to: INITAL_STATE
+Game result to: UNKNOWN
+Jako gracz 1 prosze o ruch
+5
+
+Pits state to: [4, 4, 4, 4, 4, 0, 1, 5, 5, 5, 4, 4, 4, 0]
+Game state to: AFTER_PLAYER1_TURN
+Game result to: UNKNOWN
+Jako gracz 2 prosze o ruch
+2
+
+Pits state to: [5, 4, 4, 4, 4, 0, 1, 5, 5, 0, 5, 5, 5, 1]
+Game state to: AFTER_PLAYER2_TURN
+Game result to: UNKNOWN
+Jako gracz 1 prosze o ruch
+1
+
+Pits state to: [5, 0, 5, 5, 5, 0, 7, 0, 5, 0, 5, 5, 5, 1]
+Game state to: AFTER_PLAYER1_TURN
+Game result to: UNKNOWN
+Jako gracz 2 prosze o ruch
+1
+
+Pits state to: [5, 0, 5, 5, 5, 0, 7, 0, 0, 1, 6, 6, 6, 2]
+Game state to: AFTER_PLAYER2_TURN
+Game result to: UNKNOWN
+Jako gracz 2 prosze o ruch
+2
+
+Pits state to: [5, 0, 5, 5, 5, 0, 7, 0, 0, 0, 7, 6, 6, 2]
+Game state to: AFTER_PLAYER2_TURN
+Game result to: UNKNOWN
+Jako gracz 1 prosze o ruch
+4
+
+Pits state to: [5, 0, 5, 5, 0, 1, 8, 1, 1, 1, 7, 6, 6, 2]
+Game state to: AFTER_PLAYER1_TURN
+Game result to: UNKNOWN
+Jako gracz 2 prosze o ruch
+2
+
+Pits state to: [5, 0, 5, 5, 0, 1, 8, 1, 1, 0, 8, 6, 6, 2]
+Game state to: AFTER_PLAYER2_TURN
+Game result to: UNKNOWN
+Jako gracz 1 prosze o ruch
+5
+
+Pits state to: [5, 0, 5, 5, 0, 0, 9, 1, 1, 0, 8, 6, 6, 2]
+Game state to: AFTER_PLAYER1_TURN
+Game result to: UNKNOWN
+Jako gracz 1 prosze o ruch
+0
+
+Pits state to: [0, 1, 6, 6, 1, 0, 11, 0, 1, 0, 8, 6, 6, 2]
+Game state to: AFTER_PLAYER1_TURN
+Game result to: UNKNOWN
+Jako gracz 2 prosze o ruch
+1
+
+Pits state to: [0, 1, 6, 0, 1, 0, 11, 0, 0, 0, 8, 6, 6, 9]
+Game state to: AFTER_PLAYER2_TURN
+Game result to: UNKNOWN
+Jako gracz 1 prosze o ruch
+2
+
+Pits state to: [0, 1, 0, 1, 2, 1, 12, 1, 1, 0, 8, 6, 6, 9]
+Game state to: AFTER_PLAYER1_TURN
+Game result to: UNKNOWN
+Jako gracz 2 prosze o ruch
+1
+
+Pits state to: [0, 1, 0, 0, 2, 1, 12, 1, 0, 0, 8, 6, 6, 11]
+Game state to: AFTER_PLAYER2_TURN
+Game result to: UNKNOWN
+Jako gracz 1 prosze o ruch
+5
+
+Pits state to: [0, 1, 0, 0, 2, 0, 13, 1, 0, 0, 8, 6, 6, 11]
+Game state to: AFTER_PLAYER1_TURN
+Game result to: UNKNOWN
+Jako gracz 1 prosze o ruch
+4
+
+Pits state to: [0, 1, 0, 0, 0, 1, 14, 1, 0, 0, 8, 6, 6, 11]
+Game state to: AFTER_PLAYER1_TURN
+Game result to: UNKNOWN
+Jako gracz 1 prosze o ruch
+5
+
+Pits state to: [0, 1, 0, 0, 0, 0, 15, 1, 0, 0, 8, 6, 6, 11]
+Game state to: AFTER_PLAYER1_TURN
+Game result to: UNKNOWN
+Jako gracz 1 prosze o ruch
+1
+
+Pits state to: [0, 0, 0, 0, 0, 0, 24, 1, 0, 0, 0, 6, 6, 11]
+Game state to: AFTER_PLAYER1_TURN
+Game result to: UNKNOWN
+Jako gracz 2 prosze o ruch
+0
+
+Pits state to: [0, 0, 0, 0, 0, 0, 24, 0, 1, 0, 0, 6, 6, 11]
+Game state to: AFTER_PLAYER2_TURN
+Game result to: UNKNOWN
+
+Pits state to: [0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 24]
+Game state to: END_OF_GAME
+Game result to: DRAW

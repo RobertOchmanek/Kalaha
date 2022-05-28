@@ -62,7 +62,7 @@ public class GameBoard {
         } else if (SECOND.equals(player) && isInBounds(house, player)) {
             return (2 * numHouses) - house;
         } else {
-            //Return -1 to indicate that player ended on their side or in one of the bases
+            //Return -1 to indicate that player ended on opponents side or in one of the bases
             return -1;
         }
     }

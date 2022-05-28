@@ -2,7 +2,7 @@ package processor.state;
 
 import processor.TurnProcessor;
 
-import static players.Player.*;
+import static processor.state.StateName.FIRST_PLAYER;
 
 public class FirstPlayerState extends GameState {
 
@@ -12,12 +12,11 @@ public class FirstPlayerState extends GameState {
 
     @Override
     public void processTurn() {
-        //Check whether the player can make the move at all (has at least one house with seeds > 0)
-        if (turnContext.canMove(FIRST)) {
-            baseMove();
-        } else {
-            //EndState is responsible for calculating game result and notifying observers
-            turnContext.changeState(new EndState(turnContext, SECOND));
-        }
+        baseMove();
+    }
+
+    @Override
+    public StateName getStateName() {
+        return FIRST_PLAYER;
     }
 }

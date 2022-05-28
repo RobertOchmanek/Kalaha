@@ -40,8 +40,6 @@ public class KalahaGame implements Kalah {
         while (!(turnProcessor.getCurrentState() instanceof EndState)) {
             turnProcessor.processTurn();
         }
-        System.out.println("Game will end soon, last notify");
         turnProcessor.processTurn();
-        System.out.println("Game has ended");
     }
 }

@@ -9,6 +9,7 @@ import java.util.Map;
 
 import static interfaces.KalahaState.GameStates.END_OF_GAME;
 import static players.Player.FIRST;
+import static processor.state.StateName.END;
 
 public class EndState extends GameState {
 
@@ -42,5 +43,10 @@ public class EndState extends GameState {
         //Sum leftover seeds with players score and insert into base
         leftoverSeeds += boardMap.get(base);
         boardMap.put(base, leftoverSeeds);
+    }
+
+    @Override
+    public StateName getStateName() {
+        return END;
     }
 }
