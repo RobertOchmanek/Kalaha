@@ -37,7 +37,7 @@ public class SecondPlayerState extends GameState {
             turnContext.changeState(new EndState(turnContext, FIRST));
         }
         //If player is eligible for additional stay move in current state, else transition to opponents state
-        if (!additionalMove) {
+        else if (!additionalMove) {
             turnContext.changeState(new FirstPlayerState(turnContext));
         }
     }
